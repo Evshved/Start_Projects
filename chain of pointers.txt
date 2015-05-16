@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+struct link
+{
+	int data;
+	link *previous;
+};
+class linklist
+{
+private:
+	link *first;
+public:
+	linklist()
+	{
+		first=NULL;
+	}
+	void additem(int d)
+	{
+		link *newlink = new link;
+		newlink->data=d;
+		newlink->previous=first;
+		first = newlink;
+	}
+	void showitem()
+	{
+		link *current=first;
+		while(current)
+		{
+			cout<<current->data<<endl;
+			current = current->previous;
+		}
+	}
+	~linklist()
+	{
+		cout<<"\nDestructor is running!";
+	}
+};
+int main ()
+{
+	linklist c1;
+	c1.additem(33);
+	c1.additem(44);
+	c1.additem(9999);
+	c1.showitem();
+ 
+	c1.~linklist();
+ 
+	cout<<endl;
+	system("pause");
+	return 0;
+}
